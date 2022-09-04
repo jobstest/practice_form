@@ -1,6 +1,7 @@
 package com.gmail.jobstest18;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,24 @@ import static java.lang.String.format;
 
 public class PractoceFormTestDataTests {
 
+    Faker faker = new Faker();
+
+    String firstName = faker.name().firstName();
+    String lastName = faker.name().lastName();
+    String userEmail = faker.internet().emailAddress();
+    String phone = faker.phoneNumber().phoneNumber();
+    String genderMale = "Male";
+    String subjects = "Maths";
+    String hobbies = "Sports";
+    String address = faker.rickAndMorty().location();
+    String state = "NCR";
+    String city = "Delhi";
+    String year = "1985";
+    String month = "March";
+    String day = "11";
+
+    String expectedFullName = format("%s %s", firstName, lastName);
+
     @BeforeAll
     static void setUp() {
         Configuration.baseUrl = "https://demoqa.com";
@@ -20,23 +39,6 @@ public class PractoceFormTestDataTests {
 
     @Test
     void fillPracticeFormTests() {
-
-        String firstName = "Test";
-        String lastName = "Testov";
-        String userEmail = "test@mail.com";
-        String phone = "9999999999";
-        String genderMale = "Male";
-        String subjects = "Maths";
-        String hobbies = "Sports";
-        String address = "Street 1";
-        String state = "NCR";
-        String city = "Delhi";
-        String year = "1985";
-        String month = "March";
-        String day = "11";
-
-        String expectedFullName = format("%s %s", firstName, lastName);
-
         open("/automation-practice-form");
         zoom(0.5);
         executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
