@@ -1,6 +1,8 @@
 package com.gmail.jobstest18;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +21,7 @@ public class PracticeFormTests {
 
     @Test
     void fillPracticeFormTests() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         String firstName = "Test";
         String lastName = "Testov";
