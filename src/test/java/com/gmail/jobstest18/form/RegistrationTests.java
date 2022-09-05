@@ -1,4 +1,4 @@
-package com.gmail.jobstest18;
+package com.gmail.jobstest18.form;
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;

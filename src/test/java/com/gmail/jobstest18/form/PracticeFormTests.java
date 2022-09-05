@@ -1,36 +1,40 @@
-package com.gmail.jobstest18;
+package com.gmail.jobstest18.form;
 
 import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
+import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import docs.WebSteps;
+import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static java.lang.String.format;
+import static io.qameta.allure.Allure.step;
 
-public class PractoceFormTestDataTests {
+public class PracticeFormTests {
 
-    Faker faker = new Faker();
+    private static final String REGISTRATION_FORM = "/automation-practice-form";
 
-    String firstName = faker.name().firstName();
-    String lastName = faker.name().lastName();
-    String userEmail = faker.internet().emailAddress();
-    String phone = faker.phoneNumber().phoneNumber();
+    String firstName = "Test";
+    String lastName = "Testov";
+    String userEmail = "test@mail.com";
+    String phone = "9999999999";
     String genderMale = "Male";
     String subjects = "Maths";
     String hobbies = "Sports";
-    String address = faker.rickAndMorty().location();
+    String address = "Street 1";
     String state = "NCR";
     String city = "Delhi";
     String year = "1985";
     String month = "March";
     String day = "11";
-
-    String expectedFullName = format("%s %s", firstName, lastName);
 
     @BeforeAll
     static void setUp() {
@@ -38,8 +42,24 @@ public class PractoceFormTestDataTests {
     }
 
     @Test
+    @Owner("parfionov")
+    @DisplayName("Test")
+    @Severity(SeverityLevel.BLOCKER)
+    @Feature("Задачи в репозитории") // то что отделяемо
+    @Story("Просмотр созданных задач в репозитории")
+    @Link(value = "Страница регистрации", url = "https://demoqa.com/automation-practice-form")
     void fillPracticeFormTests() {
-        open("/automation-practice-form");
+        SelenideLogger.addListener("allure", new AllureSelenide()); // шаги в аллюре
+
+        step ("Открываем страницу" + REGISTRATION_FORM, () -> {  // лямбда
+            open(REGISTRATION_FORM);
+            Allure.getLifecycle().addAttachment(
+                    "Исходники страницы",
+                    "text/html",
+                    "html",
+                    WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8)
+            );
+        });
         zoom(0.5);
         executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
         executeJavaScript("$('fixedban').remove()");
@@ -63,8 +83,8 @@ public class PractoceFormTestDataTests {
         $("#city").click();
         $(byText(city)).click();
         $("#submit").click();
-        $(".table-responsive").shouldHave(
-                text(expectedFullName),
+        $(".table-responsive").shouldHave(text(firstName),
+                text(lastName),
                 text(userEmail),
                 text(genderMale),
                 text(phone),
@@ -75,4 +95,11 @@ public class PractoceFormTestDataTests {
                 text(state + " " + city));
     }
 
+    @Test
+    public void fillPracticeFormTests2() {
+        SelenideLogger.addListener("allure", new AllureSelenide()); // шаги в аллюре
+        WebSteps steps = new WebSteps();
+
+        steps.openRegistrationPage(REGISTRATION_FORM);
+    }
 }

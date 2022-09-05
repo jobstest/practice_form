@@ -1,4 +1,4 @@
-package com.gmail.jobstest18;
+package com.gmail.jobstest18.form;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
