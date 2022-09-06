@@ -93,3 +93,10 @@ allure {
 test {
     useJUnitPlatform()
 }
+
+task practice_form_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "practice_form"
+//        excludeTags "simple"
+    }
+}

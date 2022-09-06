@@ -57,7 +57,7 @@ public class PractoceFormTestDataTests {
         $(byText(day)).click();
         $(("#subjectsInput")).setValue(subjects).pressEnter();
         $(byText(hobbies)).click();
-        $("#uploadPicture").uploadFile(new File("src/resources/Screenshot_1.png"));
+        $("#uploadPicture").uploadFile(new File("src/test/resources/img/Screenshot_1.png"));
         $("#currentAddress").setValue(address);
         $("#submit").scrollTo();
         $("#state").click();

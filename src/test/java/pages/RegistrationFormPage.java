@@ -95,7 +95,7 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage uploadPicture() {
         step("Загрузить файл в поле Picter", () -> {
-            uploadPictureButton.uploadFile(new File("src/resources/Screenshot_1.png"));
+            uploadPictureButton.uploadFromClasspath("img/Screenshot_1.png");
         });
 
         return this;
