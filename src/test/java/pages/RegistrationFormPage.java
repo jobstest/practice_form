@@ -8,6 +8,7 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class RegistrationFormPage {
     CalendarComponent calendar = new CalendarComponent();
@@ -26,99 +27,129 @@ public class RegistrationFormPage {
 
     //actions
     public RegistrationFormPage openPage() {
-        open("/automation-practice-form");
-        zoom(0.5);
-        executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
-        executeJavaScript("$('fixedban').remove()");
+        step("Открыть страницу аутентификации", () -> {
+            open("/automation-practice-form");
+            zoom(0.5);
+            executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
+            executeJavaScript("$('fixedban').remove()");
+        });
 
         return this;
     }
 
     public RegistrationFormPage setFirstName(String value) {
-        firstNameInput.setValue(value);
+        step("Заполнить поле First Name", () -> {
+            firstNameInput.setValue(value);
+        });
 
         return this;
     }
 
     public RegistrationFormPage setLastName(String value) {
-        lastNameInput.setValue(value);
+        step("Заполнить поле Last Name", () -> {
+            lastNameInput.setValue(value);
+        });
 
         return this;
     }
 
     public RegistrationFormPage setEmail(String value) {
-        emailInput.setValue(value);
+        step("Заполнить поле Email", () -> {
+            emailInput.setValue(value);
+        });
 
         return this;
     }
 
     public RegistrationFormPage setPhone(String value) {
-        phoneInput.setValue(value);
+        step("Заполнить поле Mobile", () -> {
+            phoneInput.setValue(value);
+        });
 
         return this;
     }
 
     public RegistrationFormPage clickGenderRadioButton(String value) {
-        $(byText(value)).click();
+        step("Включить радиокнопку Gender", () -> {
+            $(byText(value)).click();
+        });
 
         return this;
     }
 
     public RegistrationFormPage setSubject(String value) {
-        subjectsInput.setValue(value).pressEnter();
+        step("Заполнить поле Subject", () -> {
+            subjectsInput.setValue(value).pressEnter();
+        });
 
         return this;
     }
 
     public RegistrationFormPage clickHobbiesCheckBox(String value) {
-        $(byText(value)).click();
+        step("Включить чекбокс Hobbies", () -> {
+            $(byText(value)).click();
+        });
 
         return this;
     }
 
     public RegistrationFormPage uploadPicture() {
-        uploadPictureButton.uploadFile(new File("src/resources/Screenshot_1.png"));
+        step("Загрузить файл в поле Picter", () -> {
+            uploadPictureButton.uploadFile(new File("src/resources/Screenshot_1.png"));
+        });
 
         return this;
     }
 
     public RegistrationFormPage setAddress(String value) {
-        addressInput.setValue(value);
+        step("Заполнить поле Current Address", () -> {
+            addressInput.setValue(value);
+        });
 
         return this;
     }
 
     public RegistrationFormPage setState(String value) {
-        stateInput.click();
-        $(byText(value)).click();
+        step("Заполнить поле State", () -> {
+            stateInput.click();
+            $(byText(value)).click();
+        });
 
         return this;
     }
 
     public RegistrationFormPage setCity(String value) {
-        cityInput.click();
-        $(byText(value)).click();
+        step("Заполнить поле City", () -> {
+            cityInput.click();
+            $(byText(value)).click();
+        });
 
         return this;
     }
 
     public RegistrationFormPage clickSubmitButton() {
-        submitButton.click();
+        step("Нажать на кнопку Submit", () -> {
+            submitButton.click();
+        });
 
         return this;
     }
 
-    public RegistrationFormPage CheckResult(String key, String value) {
-        $(".table-responsive").$(byText(key))
-                .parent().shouldHave(text(value));
+    public RegistrationFormPage checkResult(String key, String value) {
+        step("Проверить правильность заполненой формы в  окне Thanks for submitting the form", () -> {
+            $(".table-responsive").$(byText(key))
+                    .parent().shouldHave(text(value));
+        });
 
         return this;
     }
 
 
     public RegistrationFormPage setBirthDate(String day, String month, String year) {
-        $("#dateOfBirthInput").click();
-        calendar.setDate(day, month, year);
+        step("Заполнить поле Date of Birth", () -> {
+            $("#dateOfBirthInput").click();
+            calendar.setDate(day, month, year);
+        });
 
         return this;
     }

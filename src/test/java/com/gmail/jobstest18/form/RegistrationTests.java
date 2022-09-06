@@ -1,7 +1,9 @@
 package com.gmail.jobstest18.form;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -34,8 +36,8 @@ public class RegistrationTests {
     }
 
     @Test
-    @Disabled
     void fillPracticeFormTests() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
         registrationFormPage.openPage()
                 .setFirstName(firstName)
@@ -51,15 +53,15 @@ public class RegistrationTests {
                 .setState(state)
                 .setCity(city)
                 .clickSubmitButton()
-                .CheckResult("Student Name", firstName + " " + lastName)
-                .CheckResult("Student Email", userEmail)
-                .CheckResult("Gender", genderMale)
-                .CheckResult("Mobile", phone)
-                .CheckResult("Date of Birth", birthDate)
-                .CheckResult("Subjects", subjects)
-                .CheckResult("Hobbies", hobbies)
-                .CheckResult("Picture", "Screenshot_1.png")
-                .CheckResult("Address", address)
-                .CheckResult("State and City", fullAdress);
+                .checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Student Email", userEmail)
+                .checkResult("Gender", genderMale)
+                .checkResult("Mobile", phone)
+                .checkResult("Date of Birth", birthDate)
+                .checkResult("Subjects", subjects)
+                .checkResult("Hobbies", hobbies)
+                .checkResult("Picture", "Screenshot_1.png")
+                .checkResult("Address", address)
+                .checkResult("State and City", fullAdress);
     }
 }
