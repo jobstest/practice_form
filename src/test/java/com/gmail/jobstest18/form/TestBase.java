@@ -19,7 +19,7 @@ public class TestBase {
     CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
     String login = config.loginJenkins();
     String password = config.passwordJenkins();
-    String url_selenoid =  System.getProperty("selenoid.autotests.cloud/wd/hub");
+    String url_selenoid =  System.getProperty("url_selenoid","selenoid.autotests.cloud/wd/hub");
 
     @Tag("practice_form")
     @BeforeAll
