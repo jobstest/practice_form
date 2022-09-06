@@ -3,6 +3,7 @@ package com.gmail.jobstest18.form;
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 
@@ -33,6 +34,7 @@ public class RegistrationTests {
     }
 
     @Test
+    @Disabled
     void fillPracticeFormTests() {
 
         registrationFormPage.openPage()

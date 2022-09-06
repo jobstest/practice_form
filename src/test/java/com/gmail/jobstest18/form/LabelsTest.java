@@ -1,12 +1,14 @@
 package com.gmail.jobstest18.form;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class LabelsTest {
 
     @Test
+    @Disabled
     @Owner("parfionov")
     @DisplayName("Test")
     @Severity(SeverityLevel.BLOCKER)

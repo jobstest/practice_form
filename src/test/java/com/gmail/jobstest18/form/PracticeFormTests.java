@@ -7,6 +7,7 @@ import docs.WebSteps;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -42,6 +43,7 @@ public class PracticeFormTests {
     }
 
     @Test
+    @Disabled
     @Owner("parfionov")
     @DisplayName("Test")
     @Severity(SeverityLevel.BLOCKER)
@@ -96,6 +98,7 @@ public class PracticeFormTests {
     }
 
     @Test
+    @Disabled
     public void fillPracticeFormTests2() {
         SelenideLogger.addListener("allure", new AllureSelenide()); // шаги в аллюре
         WebSteps steps = new WebSteps();

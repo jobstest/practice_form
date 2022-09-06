@@ -20,6 +20,17 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
 dependencies {
     testImplementation ("com.codeborne:selenide:6.7.3",
                         "org.junit.jupiter:junit-jupiter:5.9.0",
@@ -38,7 +49,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-api:5.9.0",
                     "org.slf4j:slf4j-simple:2.0.0"
     )
-
 }
 
 allure {

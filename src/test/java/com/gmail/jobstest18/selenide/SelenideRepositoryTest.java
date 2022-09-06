@@ -1,5 +1,6 @@
 package com.gmail.jobstest18.selenide;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -8,6 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class SelenideRepositoryTest {
 
     @Test
+    @Disabled
     void shouldFindeSelenideFirstRepository() {
         // открыть страницу github.com
         open("https://github.com/");
