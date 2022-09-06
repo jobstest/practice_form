@@ -125,9 +125,3 @@ task owner_properties(type: Test) {
         includeTags "owner"
     }
 }
-
-task homework(type: Test) {
-    useJUnitPlatform {
-        includeTags "homework"
-    }
-}
