@@ -119,3 +119,9 @@ task system_properties(type: Test) {
         includeTags "system"
     }
 }
+
+task owner_properties(type: Test) {
+    useJUnitPlatform {
+        includeTags "owner"
+    }
+}
