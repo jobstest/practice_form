@@ -1,4 +1,4 @@
-package com.gmail.jobstest18.selenide;
+package docs;
 
 import com.codeborne.selenide.*;
 import org.openqa.selenium.Keys;

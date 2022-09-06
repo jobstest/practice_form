@@ -5,6 +5,7 @@ import com.codeborne.pdftest.matchers.ContainsExactText;
 import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -24,6 +25,7 @@ public class SelenideDownloadTest {
     ClassLoader cl = SelenideDownloadTest.class.getClassLoader();
 
     @Test
+    @Disabled
     void downloadTest1() throws IOException {
         open("https://github.com/junit-team/junit5/blob/main/README.md");
         File textFile = $("#raw-url").download();
@@ -38,6 +40,7 @@ public class SelenideDownloadTest {
     }
 
     @Test
+    @Disabled
     void downloadTest2() throws IOException {
         open("https://github.com/junit-team/junit5/blob/main/README.md");
         File textFile = $("#raw-url").download();
@@ -49,6 +52,7 @@ public class SelenideDownloadTest {
     }
 
     @Test
+    @Disabled
     void pdfParsingTest() throws Exception {
         InputStream stream = cl.getResourceAsStream("pdf/Memo_Sochi.pdf");
         PDF pdf = new PDF(stream);
@@ -57,6 +61,7 @@ public class SelenideDownloadTest {
     }
 
     @Test
+    @Disabled
     void xlsParsingTest() throws Exception {
         InputStream stream = getClass().getClassLoader().getResourceAsStream("xls/file.xls");
         XLS xls = new XLS(stream);
@@ -65,6 +70,7 @@ public class SelenideDownloadTest {
     }
 
     @Test
+    @Disabled
     void csvParsingTest() throws Exception {
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("resources/csv/teachers.csv");
              CSVReader reader = new CSVReader(new InputStreamReader(stream, StandardCharsets.UTF_8))){
@@ -79,6 +85,7 @@ public class SelenideDownloadTest {
     }
 
     @Test
+    @Disabled
     void zipParsingTest() throws Exception {
         ZipFile zf = new ZipFile(new File("src/test/resources/zip/Telegram Desktop.zip"));
         ZipInputStream is = new ZipInputStream(cl.getResourceAsStream("zip/Telegram Desktop.zip"));

@@ -3,6 +3,7 @@ package com.gmail.jobstest18.form;
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -38,6 +39,7 @@ public class PractoceFormTestDataTests {
     }
 
     @Test
+    @Disabled
     void fillPracticeFormTests() {
         open("/automation-practice-form");
         zoom(0.5);
