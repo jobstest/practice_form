@@ -29,7 +29,7 @@ public class RegistrationFormPage {
     public RegistrationFormPage openPage() {
         step("Открыть страницу аутентификации", () -> {
             open("/automation-practice-form");
-            zoom(0.5);
+            //zoom(0.5);
             executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
             executeJavaScript("$('fixedban').remove()");
         });

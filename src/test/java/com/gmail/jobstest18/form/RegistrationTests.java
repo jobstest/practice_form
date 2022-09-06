@@ -1,16 +1,13 @@
 package com.gmail.jobstest18.form;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 
 @Tag("practice_form")
-public class RegistrationTests {
+public class RegistrationTests extends TestBase {
 
     Faker faker = new Faker();
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
@@ -31,14 +28,10 @@ public class RegistrationTests {
     String day = "11";
     String birthDate = day + " " + month + "," + year;
 
-    @BeforeAll
-    static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com";
-    }
 
     @Test
+    @DisplayName("Регистрация на странице")
     void fillPracticeFormTests() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         registrationFormPage.openPage()
                 .setFirstName(firstName)
