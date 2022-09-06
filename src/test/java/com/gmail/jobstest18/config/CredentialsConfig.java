@@ -7,4 +7,7 @@ public interface CredentialsConfig extends Config {
 
     String login();
     String password();
+
+    String loginJenkins();
+    String passwordJenkins();
 }
