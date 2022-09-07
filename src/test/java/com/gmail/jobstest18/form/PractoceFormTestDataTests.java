@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 import static java.lang.String.format;
 
 public class PractoceFormTestDataTests extends TestBase {
@@ -31,42 +32,47 @@ public class PractoceFormTestDataTests extends TestBase {
 
     @Test
     @Tag("parametr")
-    @Disabled
+    @Disabled("Заполнение регистрационной формы")
     void fillPracticeFormTests() {
-        open("/automation-practice-form");
-        zoom(0.5);
-        executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
-        executeJavaScript("$('fixedban').remove()");
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(userEmail);
-        $("#userNumber").setValue(phone);
-        $(byText(genderMale)).click();
-        $("#userNumber").setValue(phone);
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOption(year);
-        $(".react-datepicker__month-select").selectOption(month);
-        $(byText(day)).click();
-        $(("#subjectsInput")).setValue(subjects).pressEnter();
-        $(byText(hobbies)).click();
-        $("#uploadPicture").uploadFromClasspath("img/Screenshot_1.png");
-        $("#currentAddress").setValue(address);
-        $("#submit").scrollTo();
-        $("#state").click();
-        $(byText(state)).click();
-        $("#city").click();
-        $(byText(city)).click();
-        $("#submit").click();
-        $(".table-responsive").shouldHave(
-                text(expectedFullName),
-                text(userEmail),
-                text(genderMale),
-                text(phone),
-                text(day + " " + month + "," + "" + year),
-                text(subjects),
-                text(hobbies),
-                text("Screenshot_1.png"),
-                text(state + " " + city));
+        step("Открыть страницу", () -> {
+            open("/automation-practice-form");
+            zoom(0.5);
+            executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
+            executeJavaScript("$('fixedban').remove()");
+        });
+        step("Заполнить поля", () -> {
+            $("#firstName").setValue(firstName);
+            $("#lastName").setValue(lastName);
+            $("#userEmail").setValue(userEmail);
+            $("#userNumber").setValue(phone);
+            $(byText(genderMale)).click();
+            $("#userNumber").setValue(phone);
+            $("#dateOfBirthInput").click();
+            $(".react-datepicker__year-select").selectOption(year);
+            $(".react-datepicker__month-select").selectOption(month);
+            $(byText(day)).click();
+            $(("#subjectsInput")).setValue(subjects).pressEnter();
+            $(byText(hobbies)).click();
+            $("#uploadPicture").uploadFromClasspath("img/Screenshot_1.png");
+            $("#currentAddress").setValue(address);
+            $("#submit").scrollTo();
+            $("#state").click();
+            $(byText(state)).click();
+            $("#city").click();
+            $(byText(city)).click();
+            $("#submit").click();
+        });
+        step("Проверить правильность заполнения", () -> {
+            $(".table-responsive").shouldHave(
+                    text(expectedFullName),
+                    text(userEmail),
+                    text(genderMale),
+                    text(phone),
+                    text(day + " " + month + "," + "" + year),
+                    text(subjects),
+                    text(hobbies),
+                    text("Screenshot_1.png"),
+                    text(state + " " + city));
+        });
     }
-
 }
