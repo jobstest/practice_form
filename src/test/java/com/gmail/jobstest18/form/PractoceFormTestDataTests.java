@@ -38,7 +38,7 @@ public class PractoceFormTestDataTests extends TestBase {
     void fillPracticeFormTests() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открыть страницу", () -> {
-            open("/automation-practice-form");
+            open("https://demoqa.com/automation-practice-form");
             //zoom(0.5);
             executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
             executeJavaScript("$('fixedban').remove()");

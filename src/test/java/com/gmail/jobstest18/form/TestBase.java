@@ -8,7 +8,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
