@@ -17,8 +17,8 @@ public class TestBase {
 
     @BeforeAll
     static void setUp() {
-        CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
         SelenideLogger.addListener("allure", new AllureSelenide());
+        CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
 
         String login = config.loginJenkins();
         String password = config.passwordJenkins();
