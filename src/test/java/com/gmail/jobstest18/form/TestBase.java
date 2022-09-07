@@ -15,20 +15,20 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
 public class TestBase {
-
-    CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
-    String login = config.loginJenkins();
-    String password = config.passwordJenkins();
-    String url_selenoid =  System.getProperty("url_selenoid","selenoid.autotests.cloud");
+    static CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
 
     @Tag("practice_form")
     @BeforeAll
-    void setUp() {
+    static void setUp() {
+        String urlSelenoid = new StringBuilder(System.getProperty("url_selenoid"))
+                .insert(8, config.loginJenkins() + ":" + config.passwordJenkins() + "@")
+                .toString();
+
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://" + login + ":" + password + "@" + url_selenoid + "/wd/hub";
+        Configuration.remote = urlSelenoid;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
