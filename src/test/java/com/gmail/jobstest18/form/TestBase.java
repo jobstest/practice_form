@@ -27,7 +27,6 @@ public class TestBase {
         String browserSize = System.getProperty("browserSize", "1920x1080");
         String remoteDriver = System.getProperty("remoteDriver", "selenoid.autotests.cloud");
 
-        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = browser;
         Configuration.browserSize = browserSize;
         Configuration.remote = "https://" + login + ":" + password + "@" + remoteDriver + "/wd/hub";

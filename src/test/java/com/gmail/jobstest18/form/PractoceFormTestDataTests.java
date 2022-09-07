@@ -37,6 +37,7 @@ public class PractoceFormTestDataTests extends TestBase {
     @Disabled("Заполнение регистрационной формы")
     void fillPracticeFormTests() {
         SelenideLogger.addListener("allure", new AllureSelenide());
+
         step("Открыть страницу", () -> {
             open("https://demoqa.com/automation-practice-form");
             //zoom(0.5);
