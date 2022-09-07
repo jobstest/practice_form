@@ -125,3 +125,9 @@ task owner_properties(type: Test) {
         includeTags "owner"
     }
 }
+
+task parametr(type: Test) {
+    useJUnitPlatform {
+        includeTags "parametr"
+    }
+}

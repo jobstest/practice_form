@@ -29,7 +29,6 @@ public class RegistrationFormPage {
 
     //actions
     public RegistrationFormPage openPage() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открыть страницу аутентификации", () -> {
             open("/automation-practice-form");
             //zoom(0.5);

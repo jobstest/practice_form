@@ -1,22 +1,18 @@
 package com.gmail.jobstest18.form;
 
-import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static java.lang.String.format;
 
-public class PractoceFormTestDataTests {
+public class PractoceFormTestDataTests extends TestBase {
 
     Faker faker = new Faker();
-
     String firstName = faker.name().firstName();
     String lastName = faker.name().lastName();
     String userEmail = faker.internet().emailAddress();
@@ -33,12 +29,8 @@ public class PractoceFormTestDataTests {
 
     String expectedFullName = format("%s %s", firstName, lastName);
 
-    @BeforeAll
-    static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com";
-    }
-
     @Test
+    @Tag("parametr")
     @Disabled
     void fillPracticeFormTests() {
         open("/automation-practice-form");
@@ -57,7 +49,7 @@ public class PractoceFormTestDataTests {
         $(byText(day)).click();
         $(("#subjectsInput")).setValue(subjects).pressEnter();
         $(byText(hobbies)).click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/img/Screenshot_1.png"));
+        $("#uploadPicture").uploadFromClasspath("img/Screenshot_1.png");
         $("#currentAddress").setValue(address);
         $("#submit").scrollTo();
         $("#state").click();
