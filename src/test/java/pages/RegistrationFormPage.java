@@ -1,18 +1,15 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
+import com.gmail.jobstest18.form.TestBase;
 import pages.components.CalendarComponent;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class RegistrationFormPage {
+public class RegistrationFormPage extends TestBase {
     CalendarComponent calendar = new CalendarComponent();
 
     //locators

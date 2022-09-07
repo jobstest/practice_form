@@ -30,6 +30,7 @@ public class TestBase {
         Configuration.browser = browser;
         Configuration.browserSize = browserSize;
         Configuration.remote = "https://" + login + ":" + password + "@" + remoteDriver + "/wd/hub";
+        Configuration.baseUrl = "https://demoqa.com";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
