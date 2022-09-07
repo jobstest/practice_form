@@ -1,6 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import pages.components.CalendarComponent;
 
 import java.io.File;
@@ -27,6 +29,7 @@ public class RegistrationFormPage {
 
     //actions
     public RegistrationFormPage openPage() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открыть страницу аутентификации", () -> {
             open("/automation-practice-form");
             //zoom(0.5);
