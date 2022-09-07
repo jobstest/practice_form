@@ -13,22 +13,25 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-
 public class TestBase {
-    static CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
 
     @Tag("practice_form")
     @BeforeAll
     static void setUp() {
-        String urlSelenoid = new StringBuilder(System.getProperty("url_selenoid"))
-                .insert(8, config.loginJenkins() + ":" + config.passwordJenkins() + "@")
-                .toString();
-
+        CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
         SelenideLogger.addListener("allure", new AllureSelenide());
 
+        String login = config.loginJenkins();
+        String password = config.passwordJenkins();
+
+        String browser = System.getProperty("browser", "chrome");
+        String browserSize = System.getProperty("browserSize", "1920x1080");
+        String remoteDriver = System.getProperty("remoteDriver", "selenoid.autotests.cloud");
+
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.remote = urlSelenoid;
+        Configuration.browser = browser;
+        Configuration.browserSize = browserSize;
+        Configuration.remote = "https://" + login + ":" + password + "@" + remoteDriver + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
