@@ -1,9 +1,7 @@
 package com.gmail.jobstest18.form;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
+import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -35,10 +33,9 @@ public class PractoceFormTestDataTests extends TestBase {
     @Test
     @Tag("parametr")
     void fillPracticeFormTests() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открыть страницу", () -> {
-            open("https://demoqa.com/automation-practice-form");
+            Selenide.open("https://demoqa.com/automation-practice-form");
             //zoom(0.5);
             executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
             executeJavaScript("$('fixedban').remove()");
