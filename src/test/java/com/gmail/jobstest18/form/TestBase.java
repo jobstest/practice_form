@@ -20,8 +20,8 @@ public class TestBase {
 
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
 
-        String login = config.loginJenkins();
-        String password = config.passwordJenkins();
+        String login = config.login();
+        String password = config.password();
 
         String browser = System.getProperty("browser", "chrome");
         String browserSize = System.getProperty("browserSize", "1920x1080");

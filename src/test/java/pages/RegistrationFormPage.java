@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class RegistrationFormPage extends TestBase {
+public class RegistrationFormPage {
     CalendarComponent calendar = new CalendarComponent();
 
     //locators
@@ -28,7 +28,7 @@ public class RegistrationFormPage extends TestBase {
     public RegistrationFormPage openPage() {
         step("Открыть страницу аутентификации", () -> {
             open("/automation-practice-form");
-            //zoom(0.5);
+            zoom(0.5);
             executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
             executeJavaScript("$('fixedban').remove()");
         });

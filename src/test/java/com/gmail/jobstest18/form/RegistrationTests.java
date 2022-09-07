@@ -1,13 +1,17 @@
 package com.gmail.jobstest18.form;
 
+import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 
+
+
 @Tag("practice_form")
-public class RegistrationTests extends TestBase {
+public class RegistrationTests {
 
     Faker faker = new Faker();
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
@@ -57,5 +61,10 @@ public class RegistrationTests extends TestBase {
                 .checkResult("Picture", "Screenshot_1.png")
                 .checkResult("Address", address)
                 .checkResult("State and City", fullAdress);
+    }
+
+    @BeforeAll
+    static void setUp() {
+        Configuration.baseUrl = "https://demoqa.com";
     }
 }
