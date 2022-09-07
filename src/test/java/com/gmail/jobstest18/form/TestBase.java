@@ -19,7 +19,7 @@ public class TestBase {
     CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
     String login = config.loginJenkins();
     String password = config.passwordJenkins();
-    String url_selenoid =  System.getProperty("url_selenoid","selenoid.autotests.cloud/wd/hub");
+    String url_selenoid =  System.getProperty("url_selenoid","selenoid.autotests.cloud");
 
     @Tag("practice_form")
     @BeforeAll
@@ -28,7 +28,7 @@ public class TestBase {
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://" + login + ":" + password + "@" + url_selenoid;
+        Configuration.remote = "https://" + login + ":" + password + "@" + url_selenoid + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
