@@ -34,15 +34,14 @@ public class PractoceFormTestDataTests extends TestBase {
 
     @Test
     @Tag("parametr")
-    @Disabled("Заполнение регистрационной формы")
     void fillPracticeFormTests() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открыть страницу", () -> {
             open("https://demoqa.com/automation-practice-form");
             //zoom(0.5);
-            //executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
-            //executeJavaScript("$('fixedban').remove()");
+            executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
+            executeJavaScript("$('fixedban').remove()");
         });
         step("Заполнить поля", () -> {
             $("#firstName").setValue(firstName);
