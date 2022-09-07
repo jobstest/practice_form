@@ -15,7 +15,6 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-    @Tag("practice_form")
     @BeforeAll
     static void setUp() {
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
