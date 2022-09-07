@@ -41,8 +41,8 @@ public class PractoceFormTestDataTests extends TestBase {
         step("Открыть страницу", () -> {
             open("https://demoqa.com/automation-practice-form");
             //zoom(0.5);
-            executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
-            executeJavaScript("$('fixedban').remove()");
+            //executeJavaScript("$('footer').remove()"); //убираем футер шоб кнопка влезла
+            //executeJavaScript("$('fixedban').remove()");
         });
         step("Заполнить поля", () -> {
             $("#firstName").setValue(firstName);
