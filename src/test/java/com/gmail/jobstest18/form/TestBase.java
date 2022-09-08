@@ -26,11 +26,12 @@ public class TestBase {
         String browser = System.getProperty("browser", "chrome");
         String browserSize = System.getProperty("browserSize", "1920x1080");
         String remoteDriver = System.getProperty("remoteDriver", "selenoid.autotests.cloud");
+        String siteUrl = System.getProperty("url", "https://demoqa.com");
 
         Configuration.browser = browser;
         Configuration.browserSize = browserSize;
         Configuration.remote = "https://" + login + ":" + password + "@" + remoteDriver + "/wd/hub";
-        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.baseUrl = siteUrl;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
