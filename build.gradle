@@ -131,3 +131,9 @@ task parametr(type: Test) {
         includeTags "parametr"
     }
 }
+
+task simple(type: Test) {
+    useJUnitPlatform {
+        includeTags "simple"
+    }
+}
