@@ -5,4 +5,3 @@ curl -X POST \
 
      java "-DconfigFile=notifications/telegramm.json" -jar allure-notifications-4.2.1.jar
 
-     java "-DconfigFile=notifications/telegramm.json" -jar "jetbrains://idea/navigate/reference?project=practice_form&path=allure-notifications-4.2.1.jar"
