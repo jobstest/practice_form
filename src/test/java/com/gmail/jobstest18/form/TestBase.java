@@ -31,6 +31,7 @@ public class TestBase {
         Configuration.browser = browser;
         Configuration.browserSize = browserSize;
         Configuration.remote = "https://" + login + ":" + password + "@" + remoteDriver + "/wd/hub";
+        //Configuration.remote = "http://localhost:4444//wd/hub";
         Configuration.baseUrl = siteUrl;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
